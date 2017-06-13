@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>数据铁笼UI规范提案</title>
+<link rel="stylesheet" type="text/css" href="src/css/standard.css">
+<link rel="stylesheet" type="text/css" href="src/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="src/css/jeesite.css">
+<link rel="stylesheet" type="text/css" href="src/fonts/fonts.css">
+<link rel="stylesheet" type="text/css" href="src/css/style.css">
+</head>
+<body>
+<div class="standard">
+  <h2 class="standard-t">数据铁笼前端规范
+    <P><span>WEB 版本</span><span>版本号：V1.1</span><span>日期：2016-11-28</span></P>
+  </h2>
+  <div class="standard-box">
+    <h2 class="standard-n">一、页面标准</h2>
+    <div class="standard-in">
+      <h2 class="standard-n">1、页面标准</h2>
+      <p class="standard-p"> 页面默认采用html5标准 </p>
+      <p class="standard-p"> &lt;!DOCTYPE HTML&gt; </p>
+      <p class="standard-p"> &lt;html&gt; </p>
+      <p class="standard-p"> &lt;head&gt; </p>
+      <p class="standard-p"> &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt; </p>
+      <p class="standard-p"> &lt;title&gt;大数据综合分析平台&lt;/title&gt; </p>
+      <p class="standard-p"> &lt;/head&gt; </p>
+      <p class="standard-p"> &lt;body&gt; </p>
+      <p class="standard-p"> . . . . . . </p>
+      <p class="standard-p"> &lt;/body&gt; </p>
+      <p class="standard-p"> &lt;/html&gt; </p>
+    </div>
+    <div class="standard-in">
+      <h2 class="standard-n">2、标签嵌套规则</h2>
+      <p class="standard-p"> a. 块元素可以包含内联元素或某些块元素，但内联元素却不能包含块元素，它只能包含其它的内联元素。 </p>
+      <p class="standard-p"> &lt;div&gt;&lt;h1&gt;&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt; <span class="blue">——对</span></p>
+      <p class="standard-p"> &lt;a href=”#”&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt; <span class="blue">——对</span></p>
+      <p class="standard-p"> &lt;span&gt;&lt;div&gt;&lt;/div&gt;&lt;/span&gt; <span class="red">——错</span></p>
+      <p class="standard-p"> b、块级元素不能放在&lt;p&gt;里面。 </p>
+      <p class="standard-p"> &lt;p&gt;&lt;ol&gt;&lt;li&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/p&gt; <span class="red">——错</span></p>
+      <p class="standard-p"> &lt;p&gt;&lt;div&gt;&lt;/div&gt;&lt;/p&gt; <span class="red">——错</span></p>
+      <p class="standard-p"> c、有几个特殊的块级元素只能包含内嵌元素，不能再包含块级元素。 </p>
+      <p class="standard-p"> h1、h2、h3、h4、h5、h6、p、dt </p>
+      <p class="standard-p"> d、块级元素与块级元素并列、内嵌元素与内嵌元素并列 </p>
+      <p class="standard-p"> &lt;div&gt; &lt;h2&gt; &lt;/h2&gt; &lt;p&gt; &lt;/p&gt; &lt;/div&gt; <span class="blue">——对</span></p>
+      <p class="standard-p"> &lt;div&gt; &lt;a href=”#&gt; &lt;/a&gt; &lt;span&gt; &lt;/span&gt; &lt;/div&gt; <span
+                    class="blue">——对</span></p>
+      <p class="standard-p"> &lt;div&gt; &lt;h2&gt; &lt;/h2&gt; &lt;span&gt; &lt;/span&gt; &lt;/div&gt; <span class="red">——错</span> </p>
+    </div>
+    <div class="standard-in">
+      <h2 class="standard-n">3、Css和JavaScript引入</h2>
+      <p class="standard-p"> a、引入 css 和 JavaScript 时无须指明 type 属性，但是css 时必须指明 rel="stylesheet" 。 </p>
+      <p class="standard-p"> 解释：text/css 和 text/javascript 是 type 的默认值。 </p>
+      <p class="standard-p"> b、在 head 中引入页面需要的所有 css 资源。 </p>
+      <p class="standard-p"> 解释：在页面渲染的过程中，新的css可能导致元素的样式重新计算和绘制，页面闪烁。 </p>
+      <p class="standard-p"> c、JavaScript 应当放在页面末尾，或采用异步加载。 </p>
+      <p class="standard-p"> 解释：将 script 放在页面中间将阻断页面的渲染。出于性能方面的考虑，如非必要，请遵守此条建议。 </p>
+      <p class="standard-p"> d、展现定义放置于外部 css 中，行为定义放置于外部 JavaScript 中。 </p>
+      <p class="standard-p"> 解释：结构-样式-行为的代码分离，对于提高代码的可阅读性和维护性都有好处。 </p>
+    </div>
+    <div class="standard-in">
+      <h2 class="standard-n">4、CSS命名规范</h2>
+      <p class="standard-p"> a、class 必须单词全字母小写，单词间以 - 分隔。 </p>
+      <p class="standard-p"> 解释：一些浏览器已经不允许使用下划线来命名css选择器（就是不兼容）。 </p>
+      <p class="standard-p"> b、class 必须代表相应模块或部件的内容或功能，不得以样式信息进行命名。 </p>
+      <p class="standard-p"> c、元素 id 必须保证页面唯一。 </p>
+      <p class="standard-p"> d、id 建议单词全字母小写，单词间以 - 分隔。同项目必须保持风格一致。 </p>
+      <p class="standard-p"> 解释：同一个页面中，不同的元素包含相同的 id，不符合 id 的属性含义。并且使用 document.getElementById 时可能导致难以追查的问题。 </p>
+      <p class="standard-p"> e、id、class 命名，在避免冲突并描述清楚的前提下尽可能短。 </p>
+      <p class="standard-p"> f、禁止为了 hook 脚本，创建无样式信息的 class。 </p>
+      <p class="standard-p"> 解释：不允许 class 只用于让 JavaScript 选择某些元素，class 应该具有明确的语义和样式。否则容易导致 css class 泛滥。使用 id、属性选择作为 hook
+        是更好的方式。 </p>
+      <p class="standard-p"> g、同一页面，应避免使用相同的 name 与 id。 </p>
+      <p class="standard-p"> 解释：IE 浏览器会混淆元素的 id 和 name 属性， document.getElementById </p>
+    </div>
+  </div>
+  <div class="standard-box">
+    <h2 class="standard-n">二、布局规范</h2>
+    <div class="standard-in">
+      <div class="dome">头部菜单： <a href="header.html" target="_blank">查看效果</a> &nbsp;&nbsp;&nbsp;&nbsp; 左侧菜单：<a href="menuLeft.html" target="_blank">查看效果</a> &nbsp;&nbsp;&nbsp;&nbsp; 底部版权：<a href="footer.html" target="_blank">查看效果</a> </div>
+    </div>
+  </div>
+  <div class="standard-box">
+    <h2 class="standard-n">三、组件规范</h2>
+    <div class="standard-in">
+      <h2 class="standard-n">1、表格</h2>
+      <div class="dome">
+        <table id="contentTable" class="table">
+          <thead>
+            <tr>
+              <th>物理表英文名</th>
+              <th>物理表中文名</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> DCA_WORKFLOW_VARS </td>
+              <td> 工作流参数表 </td>
+              <td><a href="/a/dca/dcaTopicPhysics/showDetail?id=DCA_WORKFLOW_VARS"  class="btn-s btn-opear">详情</a> <a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/edit?id=DCA_WORKFLOW_VARS&amp;tableComment=工作流参数表">编辑</a></td>
+            </tr>
+            <tr>
+              <td> DCA_WORKFLOW_TASK_CONTENT </td>
+              <td> 工作流节点内容 </td>
+              <td><a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/showDetail?id=DCA_WORKFLOW_TASK_CONTENT">详情</a> <a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/edit?id=DCA_WORKFLOW_TASK_CONTENT&amp;tableComment=工作流节点内容">编辑</a></td>
+            </tr>
+            <tr>
+              <td> DCA_WORKFLOW_TASK </td>
+              <td> 工作流节点 </td>
+              <td><a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/showDetail?id=DCA_WORKFLOW_TASK">详情</a> <a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/edit?id=DCA_WORKFLOW_TASK&amp;tableComment=工作流节点">编辑</a></td>
+            </tr>
+            <tr>
+              <td> DCA_WORKFLOW_LOG </td>
+              <td> 工作流日志表 </td>
+              <td><a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/showDetail?id=DCA_WORKFLOW_LOG">详情</a> <a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/edit?id=DCA_WORKFLOW_LOG&amp;tableComment=工作流日志表">编辑</a></td>
+            </tr>
+            <tr>
+              <td> DCA_WORKFLOW_COMPUTE_RESULT </td>
+              <td> 工作流计算结果 </td>
+              <td><a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/showDetail?id=DCA_WORKFLOW_COMPUTE_RESULT">详情</a> <a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/edit?id=DCA_WORKFLOW_COMPUTE_RESULT&amp;tableComment=工作流计算结果">编辑</a></td>
+            </tr>
+            <tr>
+              <td> DCA_WORKFLOW_BASIC_IDX </td>
+              <td> 工作流基础指标表 </td>
+              <td><a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/showDetail?id=DCA_WORKFLOW_BASIC_IDX">详情</a> <a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/edit?id=DCA_WORKFLOW_BASIC_IDX&amp;tableComment=工作流基础指标表">编辑</a></td>
+            </tr>
+            <tr>
+              <td> DCA_WORKFLOW </td>
+              <td> 工作流表 </td>
+              <td><a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/showDetail?id=DCA_WORKFLOW">详情</a> <a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/edit?id=DCA_WORKFLOW&amp;tableComment=工作流表">编辑</a></td>
+            </tr>
+            <tr>
+              <td> DCA_TOPIC_REF_PHYSICS </td>
+              <td> 主题库和物理表的关联关系 </td>
+              <td><a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/showDetail?id=DCA_TOPIC_REF_PHYSICS">详情</a> <a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/edit?id=DCA_TOPIC_REF_PHYSICS&amp;tableComment=主题库和物理表的关联关系">编辑</a></td>
+            </tr>
+            <tr>
+              <td> DCA_ETL_JOB_LOG </td>
+              <td> ETL执行日志 </td>
+              <td><a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/showDetail?id=DCA_ETL_JOB_LOG">详情</a> <a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/edit?id=DCA_ETL_JOB_LOG&amp;tableComment=ETL执行日志">编辑</a></td>
+            </tr>
+            <tr>
+              <td> DCA_ETL_JOB_ITEM_LOG </td>
+              <td> ETL执行节点日志 </td>
+              <td><a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/showDetail?id=DCA_ETL_JOB_ITEM_LOG">详情</a> <a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/edit?id=DCA_ETL_JOB_ITEM_LOG&amp;tableComment=ETL执行节点日志">编辑</a></td>
+            </tr>
+            <tr>
+              <td> DCA_ETL_DATA_SETTING </td>
+              <td> 页面型数据加载配置表 </td>
+              <td><a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/showDetail?id=DCA_ETL_DATA_SETTING">详情</a> <a class="btn-s btn-opear" href="/a/dca/dcaTopicPhysics/edit?id=DCA_ETL_DATA_SETTING&amp;tableComment=页面型数据加载配置表">编辑</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="standard-in">
+      <h2 class="standard-n">2、按钮</h2>
+      <div class="dome"><a href="#" class="btn-s btn-opear">详情</a>&nbsp;&nbsp;&nbsp;<a href="#" class="btn-s btn-add"><i>+</i>详情</a>&nbsp;&nbsp;&nbsp;<a href="#" class="btn-s btn-opear"><i class="icon-search"></i> 查询</a></div>
+    </div>
+    <div class="standard-in">
+      <h2 class="standard-n">3、表单</h2>
+      <div class="dome">
+        <input  name="tableComment" class="input-medium required" type="text" value="" maxlength="200">
+      </div>
+    </div>
+    <div class="standard-in">
+      <h2 class="standard-n">4、翻页</h2>
+      <div class="dome">
+        <div class="pagination">
+          <ul>
+            <li class="disabled"><a href="javascript:">« 上一页</a></li>
+            <li class="active"><a href="javascript:">1</a></li>
+            <li class="disabled"><a href="javascript:">下一页 »</a></li>
+            <li class="disabled controls"><a href="javascript:">当前
+              <input type="text" value="1" onkeypress="var e=window.event||event;var c=e.keyCode||e.which;if(c==13)page(this.value,30,'');" onclick="this.select();">
+              /
+              <input type="text" value="30" onkeypress="var e=window.event||event;var c=e.keyCode||e.which;if(c==13)page(1,this.value,'');" onclick="this.select();">
+              条，共 0 条</a></li>
+          </ul>
+          <div style="clear:both;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="standard-box">
+    <h2 class="standard-n">四、图标规范</h2>
+    <div class="standard-in">
+      <h2 class="panel-title">箭头类别</h2>
+      <ul class="glyph clear m-t-10">
+        <li> <span class="icon-arrow-bottom-1"> </span><em>icon-arrow-bottom-1</em> </li>
+        <li> <span class="icon-arrow-top-1"> </span><em>icon-arrow-top-1</em> </li>
+        <li> <span class="icon-arrow-left-1"> </span><em>icon-arrow-left-1</em> </li>
+        <li> <span class="icon-arrow-right-1"> </span><em>icon-arrow-right-1</em> </li>
+        <li> <span class="icon-arrow-left-2"> </span><em>icon-arrow-left-2</em> </li>
+        <li> <span class="icon-arrow-right-2"> </span><em>icon-arrow-right-2</em> </li>
+      </ul>
+      <h2 class="panel-title">伸展搜索</h2>
+      <ul class="glyph clear m-t-10">
+        <li> <span class="icon-expand-1"> </span><em>icon-expand-1</em> </li>
+        <li> <span class="icon-expand-3"> </span><em>icon-expand-3</em> </li>
+        <li> <span class="icon-shrinkage-1"> </span><em>icon-shrinkage-1</em> </li>
+        <li> <span class="icon-shrinkage-2"> </span><em>icon-shrinkage-2</em> </li>
+      </ul>
+      <h2 class="panel-title">文件类别</h2>
+      <ul class="glyph clear m-t-10">
+        <li> <span class="icon-file-1"> </span><em>icon-file-1</em> </li>
+        <li> <span class="icon-folder-1"> </span><em>icon-folder-1</em> </li>
+        <li> <span class="icon-folder-2"> </span><em>icon-folder-2</em> </li>
+      </ul>
+      <h2 class="panel-title">搜索类别</h2>
+      <ul class="glyph clear m-t-10">
+        <li> <span class="icon-search"> </span><em>icon-search</em> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

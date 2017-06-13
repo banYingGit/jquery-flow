@@ -1,0 +1,9 @@
+{
+  "directory": "lib",
+  "timeout": 120000,
+  "registry" : {
+    "search" : [ "http://172.16.75.190:8081/repository/bower-all/" ]
+
+   },
+ "resolvers" : [ "bower-nexus3-resolver" ]
+ }

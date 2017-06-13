@@ -1,0 +1,95 @@
+<!doctype html>
+
+<html xmlns:v= "urn:schemas-microsoft-com:vml">
+
+<head>
+    <meta charset="utf-8">
+    <title>流程图DEMO</title>
+    <!--[if lt IE 9]>
+    <?import namespace="v" implementation="#default#VML" ?>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="../src/css/webflow.css"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="../dist/jquery.modalFloat.js"></script>
+    <script type="text/javascript" src="../dist/jquery.webflow.js"></script>
+    <script type="text/javascript" src="../dist/jquery.workflow.check.js"></script>
+</head>
+<body>
+<div id="demo" data-flowid="pageId"></div>
+
+<div style=" position: fixed; bottom:0 ; right: 0; width:500px; height: 200px; background: #e1e1e1;">
+
+    <input id="submit" type="button" value='导出结果'/>
+
+    <textarea id="result" row="6" style="width:300px; height:100px;"></textarea>
+    <div style="padding: 10px" id="textM"></div>
+    <div style="padding: 10px">
+
+        <input id="sure" type="button" value='改值'/>
+
+        <input id="edit" type="button" value='编辑'/>
+
+        <input id="test" type="button" value='测试'/>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+
+    $(function () {
+
+
+        $('#demo').webFlow({
+
+            infoUrl: 'doc.html',
+
+            dataUrl: 'aa.json'
+
+        });
+
+
+        $('#demo').webFlow('loadDataAjax');
+
+        //  $('#demo').webFlow('loadData', jsondata);
+
+        $('#submit').click(function () {
+
+            $('#demo').webFlow('exportData', function (data) {
+
+                $('#result').val(JSON.stringify(data))
+
+            });
+
+        });
+
+        //改名
+        $('#sure').click(function () {
+
+            $('#demo').trigger('rename', {id: "aa1", name: "yiyi"})
+
+        });
+
+
+        $('#demo').webFlow().on('save', function (e, data) {
+
+           // console.log('你点击的是保存', data.elm)
+
+            $(data.elm).modalFloat('hide')
+
+
+        });
+
+
+        $('#test').click(function () {
+
+        })
+
+
+    })
+
+
+</script>
+</body>
+</html>

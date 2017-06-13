@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>API</title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<div class="web">
+  <h2 class="title">WebFlow API</h2>
+  <div class="p-10">
+    <h3 class="title">属性：</h3>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="wgt-table">
+      <tr>
+        <th width="15%"  scope="row">width</th>
+        <td>UI的宽度，默认1366px</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">height</th>
+        <td>UI的高度,默认650px</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">infoUrl</th>
+        <td>文件格式为html，点击标签弹出窗口加载的html片段</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">saveUrl</th>
+        <td>工作台实时保存数据上传到链接</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">dataUrl</th>
+        <td>文件格式为json，工作台加载画面请求的json数据</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">haveHead</th>
+        <td>BOOL，默认为true，是否有头部</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">headLabel</th>
+        <td>BOOL，默认为true，是否有头部标题标签</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">initLabel</th>
+        <td>BOOL，默认为true，是否有头部</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">initLabelText</th>
+        <td>字符串，默认为“我的工作台”,设置头部标签文字内容</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">headBtns</th>
+        <td>字符串数组，决定了顶部栏的按钮从左至右依次都排了哪些类型的按钮,如:["new","open","save","undo","redo","reload"]；如果haveHead=false，则该定义无效。注意:除了这两个分别用来撤销操作，重做操作的按钮外，其余按钮点击时方法都需要自定义；数组中每个单元就是这些按钮的名称，可用系统中已给的"new","open","save","reload"， 也可自定义，但自定义一个类型name时,需要定义其CSS样式类.ico_name。<br/>
+          例如：
+          .GooFlow .ico_open{background:url(img/gooflow_icon.png) no-repeat -19px 1px}</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">headTitle</th>
+        <td>字符串数组，决定了顶部栏的按钮从左至右依次按钮的名字</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">haveTool</th>
+        <td>BOOL，默认为true，是否有左侧工具条</td>
+      </tr>
+        <tr>
+        <th width="15%"  scope="row">cls</th>
+        <td>设置工具条按钮参数1：选择  2：连线  4：开始  8：节点  16：结束  32：复合，默认 1 | 2 | 4 | 8 | 16 | 32</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">haveGroup</th>
+        <td>BOOL，默认为true，是否有头部</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">useOperStack </th>
+        <td>BOOL值，决定了是否要用事务序列管理工作区内的操作事务，选TRUE的话，将开启正常使用撤销undo和重做redo的功能，该设定只在可编辑状态时有效。</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">rename</th>
+        <td>BOOL，默认为flase，双击标签是否可改变标签名称，默认可以改变</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">initNum</th>
+        <td>计算默认ID值的起始SEQUENCE,默认不填时为1</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">onItemAdd</th>
+        <td>当操作某个单元（结点/线/分组块）被添加时，触发的方法，返回FALSE可阻止添加事件的发生<br/>
+           
+           格式function(id，type,json)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值,json即addNode,addLine或addArea方法的第二个传参json.</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">onItemDel</th>
+        <td>当操作某个单元（结点/线/分组块）被删除时，触发的方法，返回FALSE可阻止删除事件的发生<br/>
+            格式function(id，type)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">onItemMove</th>
+        <td>当操作某个单元（结点/分组块）被移动时，触发的方法，返回FALSE可阻止移动事件的发生<br/>
+            格式function(id，type,left,top)：id是单元的唯一标识ID,type是单元的种类,有"node","area"两种取值，线line不支持移动,left是新的左边距坐标，top是新的顶边距坐标</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">onItemRename</th>
+        <td>当操作某个单元（结点/线/分组块）被重命名时，触发的方法，返回FALSE可阻止重命名事件的发生<br/>
+            格式function(id,name,type)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值,name是新的名称</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">onItemFocus</th>
+        <td>当操作某个单元（结点/线）被由不选中变成选中时，触发的方法，返回FALSE可阻止选中事件的发生<br/>
+     格式function(id,type)：id是单元的唯一标识ID,type是单元的种类,有"node","line"两种取值,"area"不支持被选中</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">onItemBlur</th>
+        <td>当操作某个单元（结点/线）被由选中变成不选中时，触发的方法，返回FALSE可阻止取消选中事件的发生<br/>
+           格式function(id，type)：id是单元的唯一标识ID,type是单元的种类,有"node","line"两种取值,"area"不支持被取消选中</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">onLineMove</th>
+
+        <td>当移动某条折线中段的位置，触发的方法，返回FALSE可阻止重定大小/造型事件的发生<br/>
+ 格式function(id，M)：id是单元的唯一标识ID,M是中段的新X(或Y)的坐标</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">onItemResize</th>
+        <td>当操作某个单元（结点/分组块）被重定义大小或造型时，触发的方法，返回FALSE可阻止重定大小/造型事件的发生<br/>
+           格式function(id，type,width,height)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值;width是新的宽度,height是新的高度</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">onLineSetType</th>
+        <td>当变换某条连接线的类型，触发的方法，返回FALSE可阻止重定大小/造型事件的发生<br/>
+            格式function(id，type)：id是单元的唯一标识ID,type是连接线的新类型,"sl":直线,"lr":中段可左右移动的折线,"tb":中段可上下移动的折线</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">onLinePointMove</th>
+        <td>当变换某条连接线的端点变更连接的结点时，触发的方法，返回FALSE可阻止重定大小/造型事件的发生<br/>
+           格式function(id，newStart,newEnd)：id是连线单元的唯一标识ID,newStart,newEnd分别是起始结点的ID和到达结点的ID</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">onItemMark</th>
+        <td>当用重色标注某个结点/转换线时触发的方法，返回FALSE可阻止重定大小/造型事件的发生<br/>
+            格式function(id，type，mark)：id是单元的唯一标识ID,type是单元类型（"node"结点,"line"转换线），mark为布尔值,表示是要标注TRUE还是取消标注FALSE</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">&nbsp;</th>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <th width="15%"  scope="row">&nbsp;</th>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <h3 class="title">事件：</h3>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="wgt-table">
+      <tr>
+        <th width="15%"  scope="row">getValue</th>
+        <td>触发getValue 事件，可得到当前数量盒子的值。</td>
+      </tr>
+    </table>
+    <h3 class="title">方法：</h3>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="wgt-table">
+      <tr>
+        <th scope="row" width="15%">setVal</th>
+        <td>调用 setVal 方法，可设置数量盒子的值， 设置参数为指定的值，如果不设置则默认为0。</td>
+      </tr>
+      <tr>
+        <th scope="row" width="15%">operation</th>
+        <td>调用 show 方法，取消数量盒子data-state='disabled' 属性，将该盒子变为可操作。</td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
